@@ -2,7 +2,25 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const app = express();
+
+
+
+// Pozwól na zapytania tylko z Twojego frontendu na Render
+const allowedOrigins = ['https://aplikacja-teamup.onrender.com', 'http://localhost:3001'];
+
+
+
+
+// Konfiguracja CORS
+app.use(cors({
+  origin: allowedOrigins,   // Tylko te domeny mają dostęp do backendu
+  methods: ['GET', 'POST'],  // Dopuszczone metody HTTP
+  allowedHeaders: ['Content-Type', 'Authorization'], // Dopuszczone nagłówki
+}));
+
+
 
 // Importowanie plików routingowych
 const authRoutes = require('./routes/auth');
