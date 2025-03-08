@@ -295,28 +295,122 @@ nav ul li a:hover::after {
     box-shadow: 0 0 5px #ff9900; /* Delikatny cień pomarańczowy */
 }
 
-
-
 /* Dostosowanie dla responsywności */
 @media (max-width: 768px) {
+    /* Zmniejszenie paddingu na mniejszych ekranach */
     #userProfileSection {
         top: 10px;
         right: 10px;
-        padding: 8px 15px; /* Zmniejszenie paddingu na mniejszych ekranach */
+        padding: 6px 10px;
     }
-    
+
+    /* Zmniejszenie czcionki */
     #logged-in-as, #usernameDisplay, #logoutButton {
-        font-size: 0.9rem; /* Zmniejszenie czcionki na mniejszych ekranach */
+        font-size: 0.9rem;
+    }
+
+    /* Zmniejszenie font-size tabeli */
+    #schedule-display table {
+        font-size: 14px;
+    }
+
+    /* Hero sekcja */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    /* Responsywność dla sekcji obrazu */
+    .section-image {
+        max-width: 100%;
+    }
+
+    /* Optymalizacja obrazów */
+    .hero .hero-image {
+        max-height: 300px;
+    }
+
+    /* Kafelki */
+    .image-card {
+        flex-direction: column; /* Zmiana na kolumnę */
+        text-align: center;
+    }
+
+    .image-card img {
+        width: 100%; /* Zwiększenie szerokości zdjęcia */
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .image-card-text {
+        width: 100%;
+    }
+
+    /* Zmiana dla nagłówków w nawigacji */
+    header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* Responsywność dla produktów */
+    .product {
+        width: 90%;
+        margin: 10px auto;
     }
 }
 
+/* Dostosowanie dla bardzo małych ekranów (do 480px) */
 @media (max-width: 480px) {
-    #userProfileSection {
-        top: 10px;
-        right: 10px;
-        padding: 6px 10px; /* Zmniejszenie paddingu na bardzo małych ekranach */
+    /* Zmiana czcionek dla mniejszych ekranów */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    #logged-in-as, #usernameDisplay, #logoutButton {
+        font-size: 0.8rem;
+    }
+
+    /* Kafelki - zmiana wyglądu dla mniejszych ekranów */
+    .image-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .image-card-text {
+        font-size: 0.9rem;
+    }
+
+    /* Optymalizacja obrazów */
+    .hero .hero-image {
+        max-height: 250px;
+    }
+
+    /* Dostosowanie elementów nawigacji */
+    nav ul {
+        gap: 5px;
+    }
+
+    /* Responsywność dla produktów */
+    .product {
+        width: 100%;
     }
 }
+/* sekcja hero */
+
 .hero {
     position: relative;
     text-align: center;
@@ -922,37 +1016,6 @@ p {
 .nav-hide {
     display: none !important;
 }
-/* Responsywność */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .product {
-        width: 90%;
-        margin: 10px auto;
-    }
-
-    #schedule-display table {
-        font-size: 14px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-    }
-}
-
-
 .cards-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Kolumny, które dostosowują się do szerokości */
@@ -1288,39 +1351,39 @@ p {
     background-color: #e60000;
 }
 
-/* Sekcja Dodatkowa Funkcjonalność */
-.additional-features {
-    background: linear-gradient(45deg, #ff4d4d, #ffb81c);
-    color: white;
-    text-align: center;
-    padding: 50px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin: 50px auto;
-    max-width: 900px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+    /* Sekcja Dodatkowa Funkcjonalność */
+    .additional-features {
+        background: linear-gradient(45deg, #ff4d4d, #ffb81c);
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin: 50px auto;
+        max-width: 900px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
 
-/* Efekt animacji pojawiania się po przewinięciu */
-.additional-features.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+    /* Efekt animacji pojawiania się po przewinięciu */
+    .additional-features.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-.additional-features h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
+    .additional-features h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
 
-.additional-features p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: auto;
+    .additional-features p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: auto;
 
 }
 /* Sekcja Kontakt */
@@ -1365,38 +1428,7 @@ p {
     border-radius: 10px; /* Zaokrąglone rogi dla obrazka */
     margin-top: 30px;
 }
-/* Styl dla responsywności */
-@media (max-width: 768px) {
-    .contact {
-        padding: 30px 15px;
-    }
-    
-    .contact h2 {
-        font-size: 2rem;
-    }
 
-    .contact p {
-        font-size: 1rem;
-    }
-    .contact .section-image {
-        width: 80%; /* Mniejszy obrazek na telefonach */
-        margin: 20px auto; /* Wyśrodkowanie obrazka */
-    }
-}
-
-@media (max-width: 480px) {
-    .contact {
-        padding: 20px 10px;
-    }
-    
-    .contact h2 {
-        font-size: 1.8rem;
-    }
-
-    .contact p {
-        font-size: 0.9rem;
-    }
-}
 /* Styl dla kontenera galerii */
 .gallery-section {
     padding: 20px;
@@ -1496,28 +1528,4 @@ p {
 
 .cta .cta-button:hover {
     background-color: #0077b3;
-}
-
-/* Responsywność - dopasowanie zdjęć na mniejszych ekranach */
-@media (max-width: 768px) {
-    .section-image {
-        max-width: 100%;
-    }
-    .hero .hero-image {
-        max-height: 300px;
-    }
-    /* Zmiana dla kafelka na mniejszych ekranach */
-    .image-card {
-        flex-direction: column; /* Zmiana na kolumnę na mniejszych ekranach */
-        text-align: center;
-    }
-
-    .image-card img {
-        width: 80%; /* Zwiększenie szerokości zdjęcia na małych ekranach */
-        margin-bottom: 20px;
-    }
-
-    .image-card-text {
-        width: 80%;
-    }
 }
