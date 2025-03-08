@@ -7,7 +7,6 @@ const app = express();
 
 
 
-// Konfiguracja CORS, aby zezwalała na dostęp z wszystkich domen
 app.use(cors({
     origin: '*',  // Zezwalaj na zapytania z każdej domeny
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Zezwalaj na wszystkie metody HTTP
