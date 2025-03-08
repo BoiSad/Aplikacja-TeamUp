@@ -1,113 +1,96 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const publishResultsForm = document.getElementById('publish-results-form');
-    const responseMessage = document.getElementById('response-message');
-    const tournamentSelect = document.getElementById('tournament');
-    const matchSelect = document.getElementById('match');
-
-    // Funkcja do ładowania turniejów
-    async function loadTournaments() {
+    async function fetchTournaments() {
         try {
-            const response = await fetch('/tournaments');
-            if (!response.ok) throw new Error('Błąd przy pobieraniu turniejów');
-            const tournaments = await response.json();
-            tournamentSelect.innerHTML = tournaments.map(tournament => 
-                `<option value="${tournament.id}">${tournament.name}</option>`
-            ).join('');
+            const response = await fetch('http://localhost:3001/api/tournaments');
+            const tournamentSelect = document.getElementById('tournament');
+
+            tournaments.forEach(tournament => {
+                const option = document.createElement('option');
+                option.value = tournament.id;
+                option.textContent = tournament.name;
+                tournamentSelect.appendChild(option);
+            });
         } catch (error) {
-            console.error('Błąd przy pobieraniu turniejów:', error);
-            responseMessage.textContent = 'Nie udało się załadować turniejów.';
-            responseMessage.style.color = 'red';
-            responseMessage.style.display = 'block';
+            console.error('Błąd przy ładowaniu turniejów:', error);
         }
     }
 
-    // Funkcja do ładowania meczów dla wybranego turnieju
-async function loadMatchesForTournament(tournamentId) {
-    if (!tournamentId) {
-        console.error('Brak identyfikatora turnieju');
-        return;
-    }
-    
-    try {
-        const response = await fetch(`/matches/${tournamentId}`);
-        
-        if (!response.ok) {
-            throw new Error('Błąd podczas ładowania meczów: ' + response.statusText);
+    // Funkcja do pobierania drużyn
+    async function fetchTeams() {
+        try {
+            const response = await fetch('http://localhost:3001/api/teams');
+            const teams = await response.json();
+
+            const team1Select = document.getElementById('team1');
+            const team2Select = document.getElementById('team2');
+
+            team1Select.innerHTML = '<option value="">Wybierz drużynę</option>';
+            team2Select.innerHTML = '<option value="">Wybierz drużynę</option>';
+
+            teams.forEach(team => {
+                const option1 = document.createElement('option');
+                option1.value = team.id;
+                option1.textContent = team.name;
+                team1Select.appendChild(option1);
+
+                const option2 = document.createElement('option');
+                option2.value = team.id;
+                option2.textContent = team.name;
+                team2Select.appendChild(option2);
+            });
+        } catch (error) {
+            console.error('Błąd przy ładowaniu drużyn:', error);
         }
+    }
 
-        const matches = await response.json();
+    document.getElementById('tournament').addEventListener('change', (event) => {
+        const tournamentId = event.target.value;
+        if (tournamentId) {
+            fetchTeams(); // Pobierz drużyny (bez względu na turniej)
+        }
+    });
 
-        // Sprawdzanie, czy meczów jest coś
-        if (!matches.length) {
-            matchSelect.innerHTML = '<option value="">Brak meczów dla wybranego turnieju</option>';
+    fetchTournaments(); // Załaduj turnieje przy starcie strony
+    fetchTeams(); // Załaduj drużyny przy starcie strony
+
+    // Wysyłanie wyników do backendu
+    document.getElementById('publishResultsForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const tournamentId = document.getElementById('tournament').value;
+        const team1Id = document.getElementById('team1').value;
+        const team2Id = document.getElementById('team2').value;
+        const result1 = document.getElementById('result1').value;
+        const result2 = document.getElementById('result2').value;
+
+        if (!tournamentId || !team1Id || !team2Id || !result1 || !result2) {
+            alert('Wszystkie pola muszą być wypełnione!');
             return;
         }
 
-        matchSelect.innerHTML = matches.map(match => 
-            `<option value="${match.id}">${match.team1} vs ${match.team2}</option>`
-        ).join('');
+        try {
+            const response = await fetch('http://localhost:3001/api/results', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tournamentId,
+                    team1Id,
+                    team2Id,
+                    result1,
+                    result2,
+                }),
+            });
 
-    } catch (error) {
-        console.error('Błąd podczas ładowania meczów:', error);
-        responseMessage.textContent = 'Nie udało się załadować meczów.';
-        responseMessage.style.color = 'red';
-        responseMessage.style.display = 'block';
-    }
-
-
-    tournamentSelect.addEventListener('change', (e) => {
-        const tournamentId = e.target.value;
-        console.log('Wybrany turniej ID:', tournamentId); // Dodaj debugowanie
-        if (tournamentId) {
-            loadMatchesForTournament(tournamentId);
-        }
-    });
-
-}
-
-    // Obsługa zmiany wybranego turnieju
-    tournamentSelect.addEventListener('change', (e) => {
-        const tournamentId = e.target.value;
-        if (tournamentId) {
-            loadMatchesForTournament(tournamentId);
-        } else {
-            matchSelect.innerHTML = '<option value="">Wybierz mecz</option>';
-        }
-    });
-
-    // Obsługa formularza publikacji wyników
-    if (publishResultsForm) {
-        publishResultsForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(publishResultsForm);
-            const data = Object.fromEntries(formData);
-            console.log('Dane do wysłania:', data); // Dodaj to dla debugowania
-
-            try {
-                const response = await fetch('/publish-results', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    responseMessage.textContent = 'Wyniki opublikowane.';
-                    responseMessage.style.color = 'green';
-                } else {
-                    const error = await response.json();
-                    responseMessage.textContent = `Błąd: ${error.message}`;
-                    responseMessage.style.color = 'red';
-                }
-                responseMessage.style.display = 'block';
-                if (response.ok) publishResultsForm.reset();
-            } catch (error) {
-                responseMessage.textContent = 'Wystąpił błąd sieciowy.';
-                responseMessage.style.color = 'red';
-                responseMessage.style.display = 'block';
+            const result = await response.json();
+            if (response.ok) {
+                alert('Wyniki zostały opublikowane!');
+            } else {
+                alert(`Błąd: ${result.message}`);
             }
-        });
-    }
-
-    // Inicjalizacja danych
-    loadTournaments();
+        } catch (error) {
+            console.error('Błąd przy publikowaniu wyników:', error);
+        }
+    });
 });

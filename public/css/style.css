@@ -1,613 +1,1523 @@
-/* Definiowanie zmiennych kolorów */
-:root {
-    --primary-color: #6297cc;
-    --secondary-color: #0857b7;
-    --light-color: #ebe1e1;
-    --white-color
-    : #fff;
-    --gray-dark: #333;
-    --gray-light: #1d58aa;
-    --info-bg: #cbcfda;
-    --news-bg: #cbcfda;
-    --testimonials-bg: #cbcfda;
+/* Ustawienia dla całej strony */
+html, body {
+    height: 100%;
 }
 
-/* Globalne style */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--gray-dark);
-    line-height: 1.6;
-    background-color: var(--white-color);
-}
-
-/* Styl dla nawigacji */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
+    flex-direction: column; /* Układ w kolumnie */
+    justify-content: space-between; /* Stopka na dole */
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    color: white;
 }
 
-nav ul li {
-    margin: 0 15px;
-    position: relative; /* Umożliwia dodanie efektów pozycjonowania */
-}
-
-nav ul li a {
-    color: var(--white-color);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    display: block;
-    transition: color 0.3s, background-color 0.3s, transform 0.3s; /* Płynna zmiana kolorów i animacje */
-    border-radius: 5px;
-}
-
-nav ul li a:hover,
-nav ul li a:focus {
-    background-color: var(--secondary-color); /* Kolor tła po najechaniu */
-    color: var(--white-color); /* Kolor tekstu po najechaniu */
-    transform: scale(1.2); /* Powiększenie efektu */
-}
-
-/* Efekt podświetlenia pod elementem */
-nav ul li::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--secondary-color);
-    transform: scaleX(0); /* Początkowy stan (niewidoczny) */
-    transition: transform 0.3s ease; /* Płynna animacja */
-    border-radius: 2px; /* Zaokrąglenie rogów */
-}
-
-nav ul li a:hover::after,
-nav ul li a:focus::after {
-    transform: scaleX(4); /* Efekt podświetlenia */
-}
-/* Nagłówek */
-header {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.s;
-}
-
-header:hover {
-    background-color: var(--secondary-color);
-}
-
-header .logo {
-    display: inline-block;
-    width: 100px;
-    height: 50px;
-    background: url('../images/logo.png') no-repeat center center;
-    background-size: contain;
-}
-
-header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: var(--white-color);
-    text-decoration: none;
-    padding: 0.5rem;
-    transition: color 0.6s, background-color 2s;
-}
-
-header nav ul li a:hover {
-    color: var(--white-color);
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-}
-
-/* Główna sekcja */
+/* Główna zawartość strony */
 main {
-    padding: 2rem;
-}
-
-/* Formularze */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: var(--light-color);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s, transform 0.3s;
-}
-
-form:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-}
-
-form label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-}
-
-form input, form textarea, form select {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid var(--gray-light);
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-form input:focus, form textarea:focus, form select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-    outline: none;
-}
-
-form button {
-    margin-top: 1rem;
-    padding: 0.75rem 1.25rem;
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    position: relative;
-    overflow: hidden;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-form button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s;
-    transform: scale(0);
-    border-radius: 50%;
-}
-
-form button:hover::before {
-    transform: scale(1);
-}
-
-form button:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.05);
-}
-
-/* Sekcje */
-section {
-    margin: 2rem 0;
-}
-
-section h2 {
-    margin-bottom: 1rem;
-    color: var(--gray-dark);
-    font-size: 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: var(--primary-color);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-}
-
-section h2:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* Sekcja informacje */
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    background-color: var(--info-bg);
-    color: var(--gray-dark);
-}
-
-.informacje {
-    background: var(--white-color);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.informacje:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.informacje h3 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-}
-
-.informacje:hover h3 {
-    color: var(--secondary-color);
-}
-
-.informacje p {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.informacje b {
-    color: var(--secondary-color);
-}
-
-/* Stylizacja dla tabletów i większych ekranów */
-@media (min-width: 576px) {
-    .info {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .informacje {
-        flex: 1;
-        min-width: 300px;
-    }
-}
-
-@media (min-width: 768px) {
-    .informacje {
-        padding: 30px;
-    }
-
-    .informacje h3 {
-        font-size: 1.75rem;
-    }
-
-    .informacje p {
-        font-size: 1.125rem;
-    }
+    flex: 1; /* Wypełnia całą dostępną przestrzeń */
 }
 
 /* Stopka */
 footer {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    background-color: #1a1a1a;
+    color: white;
     text-align: center;
-    padding: 1rem;
-    position: relative;
-    bottom: 0;
+    padding: 20px;
+    font-size: 1rem;
     width: 100%;
-    transition: background-color 0.3s;
 }
 
-footer:hover {
-    background-color: var(--secondary-color);
+/* Ustawienie szerokości głównych kontenerów na 100% */
+.container, .hero, .features, .new-features, .contact, footer {
+    width: 100%;  /* Zapewnia pełną szerokość dla sekcji */
+    box-sizing: border-box;  /* Użycie box-sizing, aby padding nie powiększał szerokości */
+}
+/* Motyw jasny */
+body.light {
+    background-color: #ffffff;
+    color: #333;
 }
 
-footer p {
-    margin: 0;
+body.light header {
+    background: linear-gradient(45deg, #ff4d4d, #ffb81c);
 }
 
-/* Stylizacja dla responsywności */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    header nav ul {
-        margin-top: 1rem;
-    }
-
-    header nav ul li {
-        display: block;
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-
-    form {
-        padding: 1rem;
-    }
+body.light #logo, body.light nav ul li a, body.light #logoutButton {
+    color: #333;
 }
 
-/* Kafelki */
-.tiles {
+body.light .hero {
+    background: url('https://via.placeholder.com/1500x800') center/cover no-repeat;
+    color: #333;
+}
+
+
+/* Nagłówek */
+/* Sekcja nagłówka */
+header {
+    position: fixed;  /* Przykleja nagłówek do góry */
+    top: 0;
+    left: 0;
+    width: 100%;  /* Cała szerokość ekranu */
+    border-radius: 5px;
+    border: 2px solid #ff4d4d;
+    background-color: #000000;
+    background-image: url("https://www.transparenttextures.com/patterns/binding-dark.png");
+    box-shadow: 4px 4px 0 #ff1a1a, -2px -2px 0 #ffb81c;
+    color: white;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    justify-content: space-between;  /* Logo z lewej strony, menu po prawej */
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 1000;  /* Ustawienie wysokiego z-index, aby nagłówek był nad innymi elementami */
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s ease;
 }
 
-.tile {
-    background-color: var(--white-color);
-    border: 1px solid var(--gray-light);
-    border-radius: 8px;
-    padding: 1rem;
-    width: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+/* Efekt po najechaniu */
+header:hover {
+    border-color: #ffb81c;  /* Pomarańczowy kolor */
+    box-shadow: 4px 4px 0 #ffb81c, -2px -2px 0 #ff4d4d;
 }
 
-.tile:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.tile h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-.tile p {
-    margin-bottom: 0;
-    color: var(--gray-dark);
-}
-
-/* Sekcja wiadomości */
-.news {
-    padding: 2rem;
-    background-color: var(--news-bg);
-}
-
-.news-item {
-    background-color: var(--white-color);
-    border: 1px solid var(--gray-light);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.news-item h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-.news-item p {
-    margin-bottom: 0;
-    color: var(--gray-dark);
-}
-
-/* Sekcja referencji */
-.testimonials {
-    padding: 2rem;
-    background-color: var(--testimonials-bg);
-}
-
-.testimonial {
-    background-color: var(--white-color);
-    border: 1px solid var(--gray-light);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.testimonial p {
-    margin: 0;
-    font-style: italic;
-    color: var(--gray-dark);
-}
-
-.testimonial cite {
-    display: block;
-    margin-top: 0.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-/* Sekcja FAQ */
-.faq {
-    padding: 2rem;
-    background-color: var(--news-bg);
-}
-
-.faq-item {
-    background-color: var(--white-color);
-    border: 1px solid var(--gray-light);
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.faq-item h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-/* Formularz */
-#team-inputs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-#team-inputs label {
-    display: block;
-    margin-top: 1rem;
-}
-
-#team-inputs input {
-    padding: 0.75rem;
-    margin-top: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    width: calc(50% - 1rem);
-}
-
-button {
-    padding: 0.75rem 1.25rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 1rem 0;
-}
-
-button:hover {
-    background-color: #0056b3;
+/* Efekt po przewinięciu */
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.85); /* Lekko przezroczyste tło */
+    border-color: #ffb81c;
+    box-shadow: 4px 4px 0 #ffb81c, -2px -2px 0 #ff4d4d;
 }
 
 
-.invisible {
-    display: none;
+/* Nawigacja */
+nav {
+    display: flex;  /* Używamy flexbox do wyśrodkowania */
+    justify-content: center;  /* Wyśrodkowanie nawigacji */
+    flex-grow: 1;  /* Zapewnia, że przestrzeń między logo a menu jest równomiernie rozłożona */
 }
 
-#visscalendario {
-    margin-top: 20px;
-}
-/* Styl dla elementów nawigacyjnych */
 nav ul {
-    list-style: none;
+    display: flex;
+    gap: 20px;  /* Odstępy między elementami */
     padding: 0;
     margin: 0;
-    display: flex;
+    list-style: none;
 }
 
 nav ul li {
-    margin: 0 10px;
+    list-style-type: none;
 }
 
-#response-message {
-    margin-top: 10px; /* Odstęp między przyciskiem a komunikatem */
-    font-size: 14px;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s ease;
+    position: relative;
+}
+
+
+
+
+
+
+
+/* Sekcja profilu użytkownika */
+#userProfileSection {
+    display: none; /* Sekcja początkowo ukryta */
+    text-align: right;
+    position: fixed; /* Ustawienie w prawym górnym rogu */
+    top: 8px;
+    right: 20px;
+    background-color: #111; /* Głębokie ciemne tło */
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); /* Tekstura pasująca do nawigacji */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+/* Styl tekstu "Zalogowany jako:" */
+#logged-in-as {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-right: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+
+
+
+/* Styl przycisku wylogowania */
+#logoutButton {
+    
+    color: white;
+    border: 2px solid #ffb81c;
+    padding: 9px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  
+}
+
+/* logo */
+
+#logo {
+    cursor: pointer; /* Zmienia kursor na "łapkę" */
+    text-decoration: none; /* Usuwa podkreślenie, jeśli dodasz */
+    color: inherit; /* Zachowuje domyślny kolor tekstu */
+    transition: color 0.36s ease-in-out; /* Animacja zmiany koloru */
+}
+
+#logo:hover {
+    color: #ffb81c; 
+}
+
+#logo {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+     display: inline-block; /* Umożliwia większy obszar interakcji */
+}
+
+
+
+/* Dodajemy flexbox dla navbaru, aby wycentrować linki */
+nav {
+    transform: translateX(-120px); /* Przesunięcie nawigacji o 50px w lewo */
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    list-style-type: none;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s ease;
+    position: relative;
+}
+
+/* Efekt podkreślenia linków */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #ffb81c;
+    left: 50%;
+    bottom: -5px;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffb81c;
+    transform: scale(1.1); /* Zwiększenie rozmiaru przy najechaniu */
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+
+
+
+/* Sekcja profilu użytkownika */
+#userProfileSection {
+    display: none; /* Sekcja początkowo ukryta */
+    text-align: right;
+    position: fixed; /* Ustawienie w prawym górnym rogu */
+    top: 8px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.7); /* Ciemne przezroczyste tło */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
+    font-family: Arial, sans-serif;
+    z-index: 1000; /* Zapewnia, że sekcja będzie na wierzchu */
+    border: 2px solid #ff4d4d; /* Czerwone obramowanie */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efekt hover dla sekcji (zmiana obramowania na pomarańczowe) */
+#userProfileSection:hover {
+    border-color: #ff9900; /* Pomarańczowe obramowanie */
+    box-shadow: 0 0 5px #ff9900; /* Delikatny cień pomarańczowy */
+}
+
+
+
+/* Styl wyświetlania nazwy użytkownika */
+#usernameDisplay {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ffb81c; /* Neonowy złoty */
+    margin-right: 12px;
+    text-shadow: 2px 2px 3px rgba(255, 184, 28, 0.5);
+}
+
+/* Styl przycisku wylogowania */
+#logoutButton {
+    background-color: transparent; /* Przezroczyste tło */
+    color: rgb(255, 255, 255);
+    padding: 9px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid #ff4d4d; /* Czerwone obramowanie */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efekt hover dla przycisku (zmiana na pomarańczowe obramowanie) */
+#logoutButton:hover {
+    border-color: #ff9900; /* Pomarańczowe obramowanie */
+    box-shadow: 0 0 5px #ff9900; /* Delikatny cień pomarańczowy */
+}
+
+
+
+/* Dostosowanie dla responsywności */
+@media (max-width: 768px) {
+    #userProfileSection {
+        top: 10px;
+        right: 10px;
+        padding: 8px 15px; /* Zmniejszenie paddingu na mniejszych ekranach */
+    }
+    
+    #logged-in-as, #usernameDisplay, #logoutButton {
+        font-size: 0.9rem; /* Zmniejszenie czcionki na mniejszych ekranach */
+    }
+}
+
+@media (max-width: 480px) {
+    #userProfileSection {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px; /* Zmniejszenie paddingu na bardzo małych ekranach */
+    }
+}
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 60px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/background.jpg') no-repeat center center/cover;
+}
+
+.hero h1 {
+    font-size: 3rem;
     font-weight: bold;
 }
-/* Ogólne style dla kalendarza meczów */
-#schedule-display {
-    margin: 20px auto;
-    max-width: 800px;
+
+.cta {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #ff4d4d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-#schedule-display table {
+.cta:hover {
+    background-color: #ffb81c;
+}
+/* Sekcja powitalna */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Pełna wysokość ekranu */
+    text-align: center;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Tło jako obrazek */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-family: Arial, sans-serif;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
-#schedule-display th,
-#schedule-display td {
-    border: 1px solid #ddd;
-    padding: 8px;
+/* Kontener na treść */
+.hero-content {
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.6); /* Półprzezroczyste tło dla lepszej czytelności */
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+/* Nagłówek */
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Opis pod nagłówkiem */
+.hero p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+
+/* Sekcja Usług */
+.products {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.2); /* Lekko ciemne tło */
+}
+
+.products h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #ffb81c;
+}
+
+.product {
+    display: inline-block;
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 20px 0;
+    color: #ffb81c;
+}
+
+.product p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.product .buy-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.product .buy-button:hover {
+    background-color: #e60000;
+}
+
+
+/* Formularze */
+form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     text-align: center;
 }
 
+/* Styl komunikatów (sukcesu, błędów) w formularzu */
+form #create-tournament-message,
+form #delete-message,
+form #registerMessage,
+form #loginMessage,
+#schedule-message {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 10px; /* Zaokrąglone rogi */
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Styl komunikatów sukcesu */
+form .message-success,
+#create-tournament-message.message-success,
+#schedule-message.message-success {
+    color: #4caf50; /* Zielony kolor dla sukcesu */
+    border: 3px solid #4caf50; /* Zielona ramka */
+    background-color: rgba(76, 175, 80, 0.1); /* Jasne zielone tło */
+}
+
+/* Styl komunikatów błędów */
+form .message-error,
+#create-tournament-message.message-error,
+#schedule-message.message-error {
+    color: #f44336; /* Czerwony kolor dla błędów */
+    border: 3px solid #f44336; /* Czerwona ramka */
+    background-color: rgba(244, 67, 54, 0.1); /* Jasne czerwone tło */
+}
+
+/* Styl komunikatów informacji */
+form .message-info,
+#create-tournament-message.message-info,
+#schedule-message.message-info {
+    color: #2196F3; /* Niebieski kolor dla informacji */
+    border: 3px solid #2196F3; /* Niebieska ramka */
+    background-color: rgba(33, 150, 243, 0.1); /* Jasne niebieskie tło */
+}
+
+/* Styl komunikatów ostrzeżeń */
+form .message-warning,
+#create-tournament-message.message-warning,
+#schedule-message.message-warning {
+    color: #ff9800; /* Pomarańczowy kolor dla ostrzeżeń */
+    border: 3px solid #ff9800; /* Pomarańczowa ramka */
+    background-color: rgba(255, 152, 0, 0.1); /* Jasne pomarańczowe tło */
+}
+
+
+form label {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid #ff4d4d;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+form input:focus, form select:focus {
+    border-color: #ffb81c;
+    outline: none;
+}
+
+form button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #e60000;
+}
+
+
+/* Styl przycisku "Przejdź do logowania" */
+.go-to-login {
+    margin-top: 20px;
+    background-color: #388E3C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Efekty dla przycisków */
+#logoutButton, .go-to-login, form button, .cta, .buy-button {
+    transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#logoutButton:hover, .go-to-login:hover, form button:hover, .cta:hover, .buy-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Zmiana koloru przycisku na ciemniejszy przy najechaniu */
+.go-to-login:hover {
+    background-color: #2C6B2F;
+}
+/* Sekcja listy turniejów */
+#tournamentsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Układ siatki dla turniejów */
+    gap: 60px; /* Odstępy między elementami */
+    margin-top: 40px;
+    padding: 0 20px;
+    justify-items: center; /* Wyrównanie elementów w siatce */
+    
+}
+
+/* Pojedynczy element turnieju */
+.tournament {
+    background-color: rgba(255, 255, 255, 0.1); /* Przezroczyste tło */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    padding: 20px;
+    border-radius: 10px; /* Zaokrąglone rogi */
+    border: 3px solid #f44336; /* Czerwone obramowanie */
+    background-color: rgba(244, 67, 54, 0.1); /* Delikatne tło w kolorze czerwonym */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień wokół komunikatu */
+    text-align: left;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 350px; /* Maksymalna szerokość */
+}
+/* Tabela z meczami */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 2px solid #f44336;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+table tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Informacja o braku meczów */
+p {
+    color: white;
+    font-size: 16px;
+}
+/* Efekt przy najechaniu na element turnieju */
+.tournament:hover {
+    transform: translateY(-10px); /* Większy efekt podniesienia */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Silniejszy cień */
+}
+
+.tournament h3 {
+    color: #ffb81c; /* Utrzymanie złotego koloru */
+    text-transform: uppercase;
+    
+}
+
+/* Nagłówek turnieju */
+.tournament h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffb81c; /* Złoty kolor */
+    text-transform: uppercase;
+    text-align: center;
+    
+}
+
+/* Informacje o turnieju */
+.tournament p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #ccc; /* Jasny szary kolor */
+    border-radius: 5px;
+    border: 2px solid #ff4d4d;
+}
+
+/* Czas i lokalizacja */
+.tournament p:first-child {
+    font-weight: bold;
+    color: #ff4d4d; /* Czerwony kolor dla daty */
+    border-radius: 5px;
+    border: 2px solid #ff4d4d;
+}
+
+/* Komunikat, gdy brak turniejów */
+#tournamentsList p {
+    font-size: 1.2rem;
+    color: #f44336; /* Czerwony kolor błędu */
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 5px;
+    border: 2px solid #ff4d4d;
+    max-width: 1200px; /* Maksymalna szerokość dla sekcji */
+    width: 100%; /* Pełna szerokość */
+
+}
+/* Komunikat, gdy brak turniejów */
+#tournamentsList h5 {
+    font-size: 1.2rem;
+    color: #f44336; /* Czerwony kolor błędu */
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 10px; /* Zaokrąglone rogi */
+    border: 3px solid #f44336; /* Czerwone obramowanie */
+    background-color: rgba(244, 67, 54, 0.1); /* Delikatne tło w kolorze czerwonym */
+    padding: 20px; /* Dodanie przestrzeni wewnątrz */
+    max-width: 800px; /* Maksymalna szerokość komunikatu */
+    width: 100%; /* Szerokość na 100% */
+    margin: 0 auto; /* Wyśrodkowanie komunikatu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień wokół komunikatu */
+    display: block; /* Upewnij się, że element jest blokowy */
+    transform: translateX(307%);
+}
+
+/* Styl komunikatu o błędzie */
+#tournamentsList .error-message {
+    color: #ff9800; /* Pomarańczowy kolor */
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+
+}
+
+/* Komunikat o sukcesie lub błędzie */
+    .message-success {
+    font-size: 1.2rem;
+    color: #4caf50; /* Zielony kolor sukcesu */
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 10px; /* Zaokrąglone rogi */
+    border: 3px solid #4caf50; /* Zielone obramowanie */
+    background-color: rgba(76, 175, 80, 0.1); /* Delikatne tło w kolorze zielonym */
+    padding: 20px; /* Dodanie przestrzeni wewnątrz */
+    max-width: 800px; /* Maksymalna szerokość komunikatu */
+    width: 100%; /* Szerokość na 100% */
+    margin: 0 auto; /* Wyśrodkowanie komunikatu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień wokół komunikatu */
+    display: block; /* Upewnij się, że element jest blokowy */
+}
+
+.message-error {
+    font-size: 1.2rem;
+    color: #f44336; /* Czerwony kolor błędu */
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 10px; /* Zaokrąglone rogi */
+    border: 3px solid #f44336; /* Czerwone obramowanie */
+    background-color: rgba(244, 67, 54, 0.1); /* Delikatne tło w kolorze czerwonym */
+    padding: 20px; /* Dodanie przestrzeni wewnątrz */
+    max-width: 800px; /* Maksymalna szerokość komunikatu */
+    width: 100%; /* Szerokość na 100% */
+    margin: 0 auto; /* Wyśrodkowanie komunikatu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień wokół komunikatu */
+    display: block; /* Upewnij się, że element jest blokowy */
+}
+
+/* Sekcja kalendarzu */
+.kalendarz {
+    background-color: #1a1a1a; /* Ciemne tło */
+    color: white; /* Jasny tekst */
+    padding: 50px 20px 40px; /* Zwiększony padding-top, aby podnieść sekcję */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
+    margin-bottom: 10px; /* Odstęp od innych sekcji */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    margin-top: 15px; /* Zmniejszenie marginesu z góry, aby podnieść sekcję */
+}
+
+.kalendarz h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.kalendarz p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+
+
+
+
+
+/* Sekcja wprowadzająca */
+.intro {
+    background-color: #1a1a1a; /* Ciemne tło */
+    color: white; /* Jasny tekst */
+    padding: 30px 20px; /* Wewnętrzne marginesy */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
+    margin-bottom: 110px; /* Odstęp od innych sekcji */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    margin-top: 30px; /* Odstęp od góry */
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Sekcja wyszukiwania */
+#search {
+    background-color: rgba(255, 255, 255, 0.1); /* Półprzezroczyste tło */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 50px auto; /* Wycentrowanie sekcji i odstęp na dole */
+    text-align: center;
+}
+
+/* Formularz wyszukiwania */
+#searchTournamentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Etykiety formularza */
+#searchTournamentForm label {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Pola wejściowe formularza */
+#searchTournamentForm input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ff4d4d;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#searchTournamentForm input:focus {
+    border-color: #ffb81c;
+    outline: none;
+}
+
+/* Przycisk wyszukiwania */
+#searchTournamentForm button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+#searchTournamentForm button:hover {
+    background-color: #e60000;
+}
+
+
+
+/* Sekcja schedule-display */
+#schedule-display {
+    background-color: #1a1a1a; /* Ciemne tło */
+    color: white; /* Jasny tekst */
+    padding: 40px 20px; /* Wewnętrzne marginesy */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień */
+    margin-bottom: 30px; /* Odstęp od innych sekcji */
+    text-align: center; /* Wyśrodkowanie tekstu */
+}
+
+#schedule-display h2 {
+    font-size: 2.5rem; /* Duży rozmiar czcionki dla nagłówka */
+    font-weight: bold; /* Pogrubienie */
+    color: #ffb81c; /* Złoty kolor tekstu */
+    margin-bottom: 20px; /* Odstęp poniżej nagłówka */
+    text-transform: uppercase; /* Wielkie litery */
+    letter-spacing: 2px; /* Rozstawienie liter */
+}
+
+#schedule-display p {
+    font-size: 1.2rem; /* Średni rozmiar czcionki */
+    color: #ddd; /* Jasnoszary kolor tekstu */
+    line-height: 1.6; /* Wysokość linii dla lepszej czytelności */
+    margin-bottom: 0; /* Brak odstępu poniżej akapitu */
+}
+
+/* Dodatkowe style dla tabeli (jeśli wyświetlane mecze w tabeli) */
+#schedule-display table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #333; /* Tło tabeli */
+    color: #ddd; /* Kolor tekstu w tabeli */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień wokół tabeli */
+}
+
+#schedule-display th, #schedule-display td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #555; /* Jaśniejsze granice */
+    font-size: 16px;
+}
+
 #schedule-display th {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #333; /* Tło nagłówka */
+    color: #ffb81c; /* Złoty kolor tekstu w nagłówku */
     font-weight: bold;
 }
 
 #schedule-display tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #444; /* Naprzemienne tło dla wierszy */
 }
 
 #schedule-display tr:hover {
-    background-color: #e2e2e2;
-}
-
-#schedule-display td {
-    font-size: 16px;
-}
-
-#schedule-display h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Styl dla przycisków */
-#generate-schedule {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    background-color: #555;
     cursor: pointer;
-    font-size: 16px;
-    margin: 10px 0;
 }
 
-#generate-schedule:hover {
-    background-color: #45a049;
+.nav-hide {
+    display: none !important;
+}
+/* Responsywność */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    #schedule-display table {
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
 }
 
-#generate-schedule:focus {
-    outline: none;
+
+.cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Kolumny, które dostosowują się do szerokości */
+    gap: 20px;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Styl dla formularzy */
-#schedule-form {
-    margin: 20px 0;
+.card {
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Zapobiega wychodzeniu obrazka poza kartę */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#schedule-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    color: #333;
-}
-
-#schedule-form select {
+.card img {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    margin-bottom: 10px;
+    height: 200px;
+    object-fit: cover; /* Utrzymuje proporcje obrazu */
 }
 
-#schedule-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
+.card h3 {
+    font-size: 1.6rem;
+    margin: 15px;
+    text-align: center;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 0 15px 15px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efekt unoszenia karty */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .cards-section {
+        grid-template-columns: 1fr 1fr; /* Dwie kolumny na mniejszych ekranach */
+    }
+}
+
+
+
+
+/* Sekcja FAQ */
+.faq {
+    background-color: transparent; /* Ustawienie tła przezroczystego */
+    padding: 40px 20px;
+    color: white; /* Zmieniamy kolor tekstu na biały */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffb81c; /* Utrzymujemy wyróżniający kolor dla nagłówków */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.faq p {
+    font-size: 1.5rem;
+    color: #ffffff; /* Jaśniejszy odcień białego dla lepszej czytelności */
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.faq ul {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.faq ul li {
+    font-size: 1.1rem;
+    color: white; /* Biały tekst dla pytań */
+    margin-bottom: 15px;
+    padding: 15px;
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.faq ul li:hover {
+    background-color: #ffb81c; /* Efekt hover z kolorem tła */
+    color: white; /* Kolor tekstu na biały po najechaniu */
+}
+
+/* Sekcja CTA (Call to Action) */
+.faq a.cta {
+    background-color: #ffb81c;
+    color: black;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.faq a.cta:hover {
+    background-color: #ff4d4d;
+    transform: scale(1.05);
+}
+
+/* Styl dla przycisku plusa */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-#schedule-form button:hover {
-    background-color: #45a049;
+.faq-question strong {
+    font-size: 1.3rem; /* Większa czcionka dla pytania */
+    color: white; /* Pytania będą miały biały tekst */
+    font-weight: 600;
+    margin-right: 10px;
+    flex: 1;
 }
 
-#schedule-form button:focus {
+.toggle-btn {
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+.toggle-btn:focus {
     outline: none;
+}
+
+/* Styl rozwijanych odpowiedzi */
+.faq-answer {
+    display: none; /* Początkowo odpowiedzi są ukryte */
+    padding-top: 10px;
+    font-size: 1.1rem;
+    color: #ddd; /* Jaśniejszy odcień białego tekstu */
+    line-height: 1.6;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #ffb81c;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.6); /* Przezroczyste ciemne tło */
+}
+
+/* Animacja przycisku */
+.faq-question.open .toggle-btn {
+    transform: rotate(45deg);
+}
+
+/* Pokaż odpowiedź z animacją */
+.faq-question.open + .faq-answer {
+    display: block;
+    opacity: 1;
+    background-color: #ffb81c /* Zwiększona przezroczystość tła po rozwinięciu */
+}
+
+/* Delikatna animacja otwierania FAQ */
+.faq-answer {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Definicja animacji */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+/* Sekcja Zarządzanie Turniejami */
+.tournament-management {
+    background-color: rgba(0, 0, 0, 0.1);   
+    padding: 40px 20px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.tournament-management h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffb81c;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.tournament-management p {
+    font-size: 1.2rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Sekcja Funkcje */
+.features {
+    padding: 122px 120px;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffb81c;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.feature {
+    display: inline-block;
+    width: 40%; /* Zwiększamy szerokość kafelka */
+    margin: 20px 1%; /* Mniejszy odstęp między kafelkami */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    vertical-align: top;
+    overflow: hidden; /* Ukrywa część zawartości wychodzącą poza obszar kafelka */
+}
+
+.feature h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffb81c;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+/* Obrazek w kafelku */
+.feature-image {
+    width: 100%; /* Obrazek rozciąga się na całą szerokość kafelka */
+    height: 660px; /* Zwiększamy wysokość obrazka */
+    object-fit: cover; /* Obrazek zachowuje proporcje, przycinając go, aby wypełnić całą przestrzeń */
+    border-radius: 5px; /* Zaokrąglone rogi dla obrazka */
+    margin-bottom: 15px; /* Odstęp między obrazkiem a tekstem */
+}
+
+/* Efekt hover dla kafelka */
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Sekcja Nowości */
+.new-features {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: transparent; /* Tło sekcji ustawione na przezroczyste */
+}
+
+
+
+.feature-card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffb81c; /* Kolor nagłówka */
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-size: 1.2rem;
+    color: #e7e3e3;
+    line-height: 1.6;
+}
+
+/* Sekcja Call to Action */
+.cta {
+    background-color: #ffb81c;
+    color: black;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.cta a.cta-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta a.cta-button:hover {
+    background-color: #e60000;
+}
+
+/* Sekcja Dodatkowa Funkcjonalność */
+.additional-features {
+    background: linear-gradient(45deg, #ff4d4d, #ffb81c);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Efekt animacji pojawiania się po przewinięciu */
+.additional-features.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.additional-features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.additional-features p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: auto;
+
+}
+/* Sekcja Kontakt */
+.contact {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffb81c; /* Kolor wyróżniający tytuł */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    color: #ddd; /* Jaśniejszy odcień białego dla lepszej czytelności */
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact a {
+    color: #ffb81c; /* Kolor linków w stylu złotym */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact a:hover {
+    color: #ff4d4d;  /* Kolor linków przy najechaniu */
+}
+.contact .section-image {
+    width: 100%; /* Obrazek na pełną szerokość sekcji */
+    height: auto; /* Automatyczna wysokość, zachowująca proporcje */
+    border-radius: 10px; /* Zaokrąglone rogi dla obrazka */
+    margin-top: 30px;
+}
+/* Styl dla responsywności */
+@media (max-width: 768px) {
+    .contact {
+        padding: 30px 15px;
+    }
+    
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact p {
+        font-size: 1rem;
+    }
+    .contact .section-image {
+        width: 80%; /* Mniejszy obrazek na telefonach */
+        margin: 20px auto; /* Wyśrodkowanie obrazka */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 20px 10px;
+    }
+    
+    .contact h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact p {
+        font-size: 0.9rem;
+    }
+}
+/* Styl dla kontenera galerii */
+.gallery-section {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.image-item {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.image-item img:hover {
+    transform: scale(1.05);
+}
+
+.image-item p {
+    margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .image-item {
+        width: 100%;
+    }
+}
+
+
+/* Kafelek z obrazkiem i tekstem */
+.image-card {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-card img {
+    width: 40%; /* Określa szerokość obrazka w kafelku */
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Dopasowanie obrazu */
+}
+
+.image-card-text {
+    width: 55%; /* Pozwoli na odpowiednią przestrzeń dla tekstu */
+    padding-left: 20px;
+}
+
+.image-card-text h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.image-card-text p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Stylowanie zdjęć w sekcjach */
+.section-image {
+    width: 100%; /* Pełna szerokość kontenera */
+    max-width: 1000px; /* Maksymalna szerokość zdjęcia */
+    height: auto; /* Zachowanie proporcji zdjęcia */
+    margin: 20px 0; /* Odstęp od tekstu */
+    border-radius: 8px; /* Zaokrąglone rogi zdjęcia */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lekki cień wokół zdjęcia */
+    object-fit: cover; /* Dopasowanie obrazu do kontenera */
+}
+
+/* Przycisk "Zarejestruj się" */
+.cta .cta-button {
+    background-color: #0088cc;
+    padding: 12px 30px;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.cta .cta-button:hover {
+    background-color: #0077b3;
+}
+
+/* Responsywność - dopasowanie zdjęć na mniejszych ekranach */
+@media (max-width: 768px) {
+    .section-image {
+        max-width: 100%;
+    }
+    .hero .hero-image {
+        max-height: 300px;
+    }
+    /* Zmiana dla kafelka na mniejszych ekranach */
+    .image-card {
+        flex-direction: column; /* Zmiana na kolumnę na mniejszych ekranach */
+        text-align: center;
+    }
+
+    .image-card img {
+        width: 80%; /* Zwiększenie szerokości zdjęcia na małych ekranach */
+        margin-bottom: 20px;
+    }
+
+    .image-card-text {
+        width: 80%;
+    }
 }

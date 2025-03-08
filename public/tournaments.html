@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyszukiwanie Turniejów</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div id="logo">TeamUp</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="register.html">Rejestracja</a></li>
+                <li><a href="login.html">Logowanie</a></li>
+            </ul>
+        </nav>
+        <!-- Sekcja profilu użytkownika w prawym górnym rogu -->
+        <div id="userProfileSection" style="display: none; text-align: right;">
+            <span id="logged-in-as">Zalogowany jako: <strong></strong></span>
+            <span id="usernameDisplay"></span>
+            <button id="logoutButton">Wyloguj</button>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="intro">
+            <h1>Wyszukiwanie Turniejów</h1>
+            <p>Wyszukaj turnieje według zakresu dat.</p>
+       
+            <form id="searchTournamentForm">
+                <div class="form-group">
+                    <label for="startDate">Data początkowa:</label>
+                    <input type="date" id="startDate" name="startDate" />
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">Data końcowa:</label>
+                    <input type="date" id="endDate" name="endDate" />
+                </div>
+
+                <button type="submit" class="btn">Szukaj</button>
+            </form>
+
+            <div id="tournamentsList">
+                <!-- Lista turniejów pojawi się tutaj -->
+            </div>
+        </section   >
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeamUp. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+   
+    
+    <script src="js/search-tournaments.js"></script> <!-- Skrypt wyszukiwania -->
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pobieranie danych z localStorage
+            const username = localStorage.getItem('username');
+            const userRole = localStorage.getItem('role');
+            const userId = localStorage.getItem('id');
+        
+            // Sprawdzanie, czy użytkownik jest zalogowany
+            if (username && userRole) {
+                // Jeśli zalogowany, wyświetlamy sekcję profilu
+                document.getElementById('userProfileSection').style.display = 'block';
+                document.getElementById('usernameDisplay').textContent = username;
+            }
+            
+            // Obsługa przycisku wylogowania
+            document.getElementById('logoutButton').addEventListener('click', () => {
+                // Usuwanie danych użytkownika z localStorage
+                localStorage.removeItem('username');
+                localStorage.removeItem('role');
+                localStorage.removeItem('id')
+                // Przekierowanie na stronę logowania
+                window.location.href = 'login.html';
+            });
+        });
+        </script>
+     <script src="js/auth.js"></script>
+     <script src="js/index.js"></script>
+</body>
+</html>

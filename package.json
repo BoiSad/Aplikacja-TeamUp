@@ -1,27 +1,17 @@
 {
-  "name": "teamup",
-  "version": "1.0.0",
-  "main": "config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "express": "^4.19.2",
-    "express-session": "^1.18.0",
-    "i18next": "^23.14.0",
-    "i18next-browser-languagedetector": "^8.0.0",
-    "i18next-http-backend": "^2.6.1",
-    "jspdf": "^2.5.1",
-    "multer": "^1.4.5-lts.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.11.0",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
-  }
+    "name": "turnieje-app",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node server/server.js"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "bcryptjs": "^3.0.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "express-session": "^1.18.1",
+        "jsonwebtoken": "^9.0.2",
+        "mysql2": "^3.12.0"
+    }
 }

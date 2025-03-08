@@ -3,47 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publikacja Wyników</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/publish_results.js" defer></script>
+    <title>Publikowanie wyników</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Jeśli masz plik stylów -->
 </head>
 <body>
     <header>
-        <div class="logo"></div>
+        <div id="logo">TeamUp</div>
         <nav>
             <ul>
                 <li><a href="index.html">Strona Główna</a></li>
                 <li><a href="register.html">Rejestracja</a></li>
                 <li><a href="login.html">Logowanie</a></li>
-                <li><a href="create_tournament.html">Stwórz Turniej</a></li>
-                <li><a href="publish_results.html">Publikacja Wyników</a></li>
-                <li><a href="customize_settings.html">Personalizacja</a></li>
             </ul>
         </nav>
-        <div id="user-info" class="user-info"></div>
+        <!-- Sekcja profilu użytkownika w prawym górnym rogu -->
+        <div id="userProfileSection" style="display: none; text-align: right;">
+            <span id="logged-in-as">Zalogowany jako: <strong></strong></span>
+            <span id="usernameDisplay"></span>
+            <button id="logoutButton">Wyloguj</button>
+        </div>
     </header>
+
     <main>
-        <h1>Publikacja Wyników</h1>
-        <form id="publish-results-form">
+        <section class="hero">
+            <img src="images/pilka-czarnetlo.jpg" alt="Piłka na ciemnym tle" class="hero-bg">
+        <section class="intro">
+        <div class="container">
+        <h1>Publikowanie wyników turnieju</h1>
+        <form id="publishResultsForm">
             <label for="tournament">Wybierz turniej:</label>
-            <select id="tournament" name="tournament" required> 
-                <!-- Opcje będą załadowane dynamicznie -->
+            <select id="tournament" name="tournament" required>
+                <option value="">Wybierz turniej</option>
+                <!-- Opcje będą dynamicznie ładowane -->
             </select>
 
-            <label for="match">Wybierz mecz:</label>
-            <select id="match" name="match" required>
-                <!-- Opcje będą załadowane dynamicznie -->
+            <label for="team1">Drużyna 1:</label>
+            <select id="team1" name="team1" required>
+                <option value="">Wybierz drużynę</option>
+                <!-- Opcje będą dynamicznie ładowane -->
             </select>
 
-            <label for="result">Wynik:</label>
-            <input type="text" id="result" name="result" required>
+            <label for="team2">Drużyna 2:</label>
+            <select id="team2" name="team2" required>
+                <option value="">Wybierz drużynę</option>
+                <!-- Opcje będą dynamicznie ładowane -->
+            </select>
 
-            <button type="submit">Opublikuj Wynik</button>
-            <div id="response-message" style="display: none;"></div>
+            <label for="result1">Wynik drużyny 1:</label>
+            <input type="number" id="result1" name="result1" required>
+
+            <label for="result2">Wynik drużyny 2:</label>
+            <input type="number" id="result2" name="result2" required>
+
+            <button type="submit">Zapisz wynik</button>
         </form>
+        </div>
+    </section>
+</section>
+
     </main>
+
     <footer>
-        <p>&copy; <span id="year"></span> TeamUp. Wszelkie prawa zastrzeżone.</p>
+        <p>&copy; 2025 TeamUp. Wszystkie prawa zastrzeżone.</p>
     </footer>
+    
+    <script src="js/index.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/tournaments.js"></script>
+    <script src="js/create-tournament.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/publish_results.js"></script> <!-- Skrypt z powyższego kodu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pobieranie danych z localStorage
+            const username = localStorage.getItem('username');
+            const userRole = localStorage.getItem('role');
+            const userId = localStorage.getItem('id');
+        
+            // Sprawdzanie, czy użytkownik jest zalogowany
+            if (username && userRole) {
+                // Jeśli zalogowany, wyświetlamy sekcję profilu
+                document.getElementById('userProfileSection').style.display = 'block';
+                document.getElementById('usernameDisplay').textContent = username;
+            }
+            
+            // Obsługa przycisku wylogowania
+            document.getElementById('logoutButton').addEventListener('click', () => {
+                // Usuwanie danych użytkownika z localStorage
+                localStorage.removeItem('username');
+                localStorage.removeItem('role');
+                localStorage.removeItem('id')
+                // Przekierowanie na stronę logowania
+                window.location.href = 'login.html';
+            });
+        });
+        </script>
 </body>
 </html>

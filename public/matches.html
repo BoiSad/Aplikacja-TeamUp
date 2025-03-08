@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecze Turniejów</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div id="logo">TeamUp</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="register.html">Rejestracja</a></li>
+                <li><a href="login.html">Logowanie</a></li>
+                <li><a href="tournaments.html">Turnieje</a></li>
+                <li><a href="matches.html">Mecze</a></li>
+                <li><a href="publish_results.html">Publikacja Wyników</a></li>
+            </ul>
+        </nav>
+       
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="images/pilka-czarnetlo.jpg" alt="Piłka na ciemnym tle" class="hero-bg">
+        <section class="intro">
+            <h1>Mecze Turniejów</h1>
+            <p>Dodaj nowe mecze lub przeglądaj istniejące mecze turniejów.</p>
+        </section>
+
+        <section id="create-match">
+            <h2>Dodaj Mecz</h2>
+            <form id="createMatchForm">
+                <div class="form-group">
+                    <label for="matchTournament">Turniej:</label>
+                    <select id="matchTournament" name="tournament" required>
+                        <option value="">Wybierz turniej</option>
+                        <!-- Opcje turniejów będą dynamicznie dodane przez JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="team1">Drużyna 1:</label>
+                    <input type="text" id="team1" name="team1" placeholder="Nazwa Drużyny 1" required>
+                </div>
+                <div class="form-group">
+                    <label for="team2">Drużyna 2:</label>
+                    <input type="text" id="team2" name="team2" placeholder="Nazwa Drużyny 2" required>
+                </div>
+                <div class="form-group">
+                    <label for="matchDate">Data i godzina:</label>
+                    <input type="datetime-local" id="matchDate" name="matchDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="matchLocation">Lokalizacja:</label>
+                    <input type="text" id="matchLocation" name="matchLocation" placeholder="Lokalizacja meczu" required>
+                </div>
+                <button type="submit">Dodaj Mecz</button>
+            </form>
+            <div id="createMessage"></div>
+        </section>
+
+        <section id="matches-list">
+            <h2>Lista Meczów</h2>
+            <div id="matches">
+                <!-- Lista meczów zostanie dynamicznie załadowana tutaj -->
+            </div>
+        </section>
+    </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeamUp. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/tournaments.js"></script>
+    <script src="js/create-tournament.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/matches.js"></script>
+   
+    <script src="js/index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pobieranie danych z localStorage
+            const username = localStorage.getItem('username');
+            const userRole = localStorage.getItem('role');
+            const userId = localStorage.getItem('id');
+        
+            // Sprawdzanie, czy użytkownik jest zalogowany
+            if (username && userRole) {
+                // Jeśli zalogowany, wyświetlamy sekcję profilu
+                document.getElementById('userProfileSection').style.display = 'block';
+                document.getElementById('usernameDisplay').textContent = username;
+            }
+            
+            // Obsługa przycisku wylogowania
+            document.getElementById('logoutButton').addEventListener('click', () => {
+                // Usuwanie danych użytkownika z localStorage
+                localStorage.removeItem('username');
+                localStorage.removeItem('role');
+                localStorage.removeItem('id')
+                // Przekierowanie na stronę logowania
+                window.location.href = 'login.html';
+            });
+        });
+        </script>
+</body>
+</html>

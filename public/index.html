@@ -1,136 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeamUp - Strona Główna</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
 </head>
+
 <body>
+
     <header>
-        <div class="logo"></div>
+        <div id="logo">TeamUp</div>
         <nav>
-            <ul>
+            <ul id="nav-links">
                 <li><a href="index.html">Strona Główna</a></li>
                 <li><a href="register.html">Rejestracja</a></li>
                 <li><a href="login.html">Logowanie</a></li>
-                <li><a href="create_tournament.html">Stwórz Turniej</a></li>
-                <li><a href="publish_results.html">Publikacja Wyników</a></li>
-                <li><a href="customize_settings.html">Personalizacja</a></li>
+                <li id="nav-create-tournament"><a href="create-tournament.html">Stwórz Turniej</a></li>
+                <li><a href="tournaments.html">Turnieje</a></li>
+                <li id="nav-publish-results"><a href="publish_results.html">Publikacja Wyników</a></li>
+                <li id="nav-organizer-dashboard"><a href="organizer-dashboard.html">Panel Organizatora</a></li>
             </ul>
         </nav>
-        <div id="user-info" class="user-info"></div>
+    
+        <!-- Sekcja profilu użytkownika w prawym górnym rogu -->
+        <div id="userProfileSection" style="display: none; text-align: right;">
+            <span id="logged-in-as">Zalogowany jako: <strong></strong></span>
+            <span id="usernameDisplay"></span>
+            <button id="logoutButton">Wyloguj</button>
+        </div>
     </header>
+
     <main>
-   
+<section class="hero">
+    <img src="images/pilka-czarnetlo.jpg" alt="Piłka na ciemnym tle" class="hero-bg">
+    <div class="hero-content">
+        <h1>TeamUp - Jedyna platforma, której potrzebujesz!</h1>
+        <p>Planowanie turniejów, zarządzanie drużynami i harmonogramy w jednym miejscu. <br>Dołącz do nas!</p>
+    </div>
+    
+</section>
+    
+       <!-- Sekcja Funkcje -->
+<section class="features">
+    <h2>Nasze Funkcje</h2>
+    <div class="feature">
+        <img src="images/taktyka.jpg" alt="Planowanie taktyki piłkarskiej" class="feature-image">
+        <h3>Zaplanuj swój Turniej</h3>
+        <p>Planowanie wydarzeń sportowych nigdy nie było prostsze. Z TeamUp zorganizujesz każdy turniej w kilka chwil, bez tracenia czasu na ręczne zarządzanie.</p>
+    </div>
+    <div class="feature">
+        <img src="images/panowie-w-kolku.jpg" alt="Inna forma taktyki" class="feature-image">
+        <h3>Zbierz drużyny</h3>
+        <p>Zbierz nawet do 20 drużyn i ciesz się automatycznie generowanym kalendarzem spotkań!</p>
+    </div>
+    <div class="feature">
+        <img src="images/rozciaganie.jpg" alt="Harmonogramowanie meczów" class="feature-image">
+        <h3>Automatyczne Harmonogramowanie</h3>
+        <p>Bez stresu! TeamUp automatycznie tworzy harmonogram meczów, uwzględniając dostępność drużyn i preferencje czasowe.</p>
+    </div>
+    <div class="feature">
+        <img src="images/trener-mowi.jpg" alt="Optymalizacja harmonogramów" class="feature-image">
+        <h3>Modifikacja na bieżąco!</h3>
+        <p>Usuwaj, edytuj i zmieniaj informacje związane z turniejem w każdym momencie!</p>
+    </div>
+</section>
+    
 
-        <section class="info">
-            <div class="informacje">
-                <h3>Organizuj swoje turnieje sportowe szybko i efektywnie</h3>
-                <p>Aplikacja "Organizator Turniejów" została stworzona w celu usprawnienia procesu zarządzania i organizacji turniejów sportowych.</p>
-            </div>
-            <div class="informacje">
-                <h3>Grupy docelowe</h3>
-                <p>
-                    <b>• Organizatorzy turniejów sportowych: </b> Osoby odpowiedzialne za planowanie i koordynację wydarzeń sportowych. <br>
-                    <b>• Uczestnicy turniejów:</b> Zawodnicy i drużyny biorące udział w turniejach. <br>
-                    <b>• Sędziowie: </b> Osoby odpowiedzialne za sędziowanie meczów. <br>
-                    <b>• Widzowie: </b> Osoby śledzące wyniki i statystyki turniejów.
-                </p>
-            </div>
-            <div class="informacje">
-                <h3>Funkcjonalności Strony</h3>
-                <p>
-                    <b> • Rejestracja i logowanie:</b> Umożliwia organizatorom i uczestnikom tworzenie kont i logowanie się do systemu.<br>
-                    <b> • Tworzenie turniejów: </b>Organizatorzy mogą tworzyć nowe turnieje, definiować ich format, harmonogram, zasady i inne parametry.<br>
-                        <b>• Rejestracja uczestników:</b> Uczestnicy mogą rejestrować się do turniejów poprzez platformę online.<br>
-                            <b> • Zarządzanie harmonogramem meczów:</b> Organizatorzy mogą ustalać terminy, miejsca spotkań oraz przypisywać sędziów.<br>
-                                <b>• Publikacja wyników i statystyk: </b>Organizatorzy mogą wprowadzać wyniki meczów, a uczestnicy i widzowie mogą przeglądać aktualne statystyki.<br>
-                </p>
-            </div>
-        </section>
-        
-            </div>
-        </section>
-        
-        
-        <section class="tiles">
-            <div class="tile">
-                <h3>Organizacja Turniejów</h3>
-                <p>Specjalizujemy się w organizacji profesjonalnych turniejów piłkarskich na każdym poziomie zaawansowania. Od planowania po realizację, jesteśmy z Tobą na każdym kroku.</p>
-            </div>
-            <div class="tile">
-                <h3>Rejestracja Drużyn</h3>
-                <p>Umożliwiamy łatwą i szybką rejestrację drużyn do naszych turniejów, zapewniając przejrzysty system zapisów i zarządzania uczestnikami.</p>
-            </div>
-            <div class="tile">
-                <h3>Wsparcie Techniczne</h3>
-                <p>Zapewniamy pełne wsparcie techniczne podczas turniejów, w tym organizację sprzętu i obsługę sędziów, aby wydarzenie przebiegło bez zakłóceń.</p>
-            </div>
-        </section>
-        
-        
+      <!-- Sekcja FAQ -->
+      <section class="faq">
+        <h2>Najczęściej Zadawane Pytania</h2>
+        <p>Odpowiedzi na najczęściej zadawane pytania związane z funkcjonalnością TeamUp.</p>
+        <ul>
+            <li>
+                <div class="faq-question">
+                    <strong>Jak mogę wyszukać turnieje?</strong>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p>Wyszukiwanie turniejów jest szybkie i bardzo proste, wystarczy, że po kliknięciu na podstronę "Turnieje" wybierzesz zakres dat, który Cie interesuje!</p>
+                </div>
+            </li>
+            <li>
+                <div class="faq-question">
+                    <strong>Czy mogę zarządzać wieloma turniejami jednocześnie?</strong>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p>Tak, nasza platforma pozwala na zarządzanie wieloma turniejami w tym samym czasie pod warunkiem, że będą tworzone przez jednego organizatora.</p>
+                </div>
+            </li>
+            <li>
+                <div class="faq-question">
+                    <strong>Jak dodawać drużyny do turnieju?</strong>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p>Drużyny możesz dodać za pomoca formularza generującego harmonogramy, po wybraniu liczby drużyn i wpisaniu ich nazw jednym przyciskiem tworzysz kalendarz spotkać i dodajesz swoje zespoły!.</p>
+                </div>
+            </li>
+            <li>
+                <div class="faq-question">
+                    <strong>Jak mogę publikować wyniki?</strong>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p>Po zakończeniu meczu, wyniki można łatwo wprowadzić do systemu i natychmiastowo publikować je na stronie turnieju. Wyniki będą dostępne na żywo!</p>
+                </div>
+            </li>
+            <li>
+                <div class="faq-question">
+                    <strong>Jak wygląda harmonogram meczów?</strong>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p>Harmonogram meczów jest automatycznie generowany na podstawie dostępnych terminów i drużyn w sekcji tworzenia turniejów.</p>
+                </div>
+            </li>
+            <li>
+                <div class="faq-question">
+                    <strong>Czy aplikacja jest darmowa?</strong>
+                    <button class="toggle-btn">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p>Tak, korzystanie z aplikacji jest całkowicie za darmo. Możesz zacząć korzystać z pełnej funkcjonalności bez ukrytych opłat!</p>
+                </div>
+            </li>
+        </ul>
+        <a href="register.html" class="cta">Zarejestruj się teraz</a>
 
-        <section class="news">
-            <h2>Aktualności</h2>
-            <div class="news-item">
-                <h3>Rozpoczęcie zapisów na Letni Turniej Piłkarski</h3>
-                <p>Już teraz można zgłaszać drużyny do Letniego Turnieju Piłkarskiego! Zarejestruj swoją drużynę i weź udział w największym wydarzeniu sezonu.</p>
-            </div>
-            <div class="news-item">
-                <h3>Nowe zasady dla drużyn młodzieżowych</h3>
-                <p>Wprowadziliśmy nowe zasady dla drużyn młodzieżowych, które mają na celu zwiększenie bezpieczeństwa i fair play podczas rozgrywek.</p>
-            </div>
-            <div class="news-item">
-                <h3>Podsumowanie Turnieju Wiosennego</h3>
-                <p>Wiosenny Turniej Piłkarski zakończony sukcesem! Gratulacje dla zwycięzców i dziękujemy wszystkim drużynom za udział i sportową postawę.</p>
-            </div>
-        </section>
         
-        
-        <section class="testimonials">
-            <h2>Opinie Uczestników</h2>
-            <div class="testimonial">
-                <p>"Organizacja turnieju była na najwyższym poziomie. Wszystko odbyło się zgodnie z planem, a nasze drużyny miały świetną zabawę!"</p>
-                <cite>- Michał Kwiatkowski, trener drużyny A</cite>
-            </div>
-            <div class="testimonial">
-                <p>"Profesjonalne podejście do organizacji, doskonałe zarządzanie wydarzeniem i świetna atmosfera. Zdecydowanie polecam!"</p>
-                <cite>- Anna Wójcik, przedstawicielka drużyny B</cite>
-            </div>
-            <div class="testimonial">
-                <p>"Turniej był dobrze zorganizowany, a wsparcie techniczne podczas rozgrywek było bez zarzutu. Na pewno weźmiemy udział w kolejnych edycjach!"</p>
-                <cite>- Jan Nowak, kapitan drużyny C</cite>
-            </div>
-        </section>
-        
-        
-        <section class="faq">
-            <h2>Najczęściej Zadawane Pytania</h2>
-            <div class="faq-item">
-                <h3>Jakie są zasady uczestnictwa w turnieju?</h3>
-                <p>Aby wziąć udział w turnieju, drużyny muszą się zarejestrować przed upływem terminu. Szczegółowe zasady znajdują się w regulaminie dostępnym na naszej stronie.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Co powinno zawierać zgłoszenie drużyny?</h3>
-                <p>W zgłoszeniu należy podać nazwę drużyny, dane kontaktowe, nazwiska zawodników oraz preferencje dotyczące terminów rozgrywek.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Jakie są koszty uczestnictwa?</h3>
-                <p>Koszty uczestnictwa różnią się w zależności od turnieju. Szczegółowe informacje na temat opłat dowiedzą sie państwo po skontaktowaniu sie z nami na naszej stronie.</p>
-            </div>
-        </section>
-        
-        
+    </section>
+    
 
+       <!-- Sekcja Nowości -->
+    <section class="new-features">
+        <div class="feature-card">
+            <h2>Nowość w TeamUp: Panel Organizatora!</h2>
+            <p>Prezentujemy zupełnie nowy Panel Organizatora – centrum zarządzania Twoimi turniejami! Teraz możesz w jednym miejscu:</p>
+            <p>Panel Organizatora został zaprojektowany z myślą o wygodzie i oszczędności czasu. Przetestuj już dziś i przekonaj się, jak łatwo można zarządzać turniejami z TeamUp!</p>
+        </div>
+           
+        </div>
+        <img src="images/piatka.jpg" alt="piątka" class="section-image">
+    </section>
+         <!-- Sekcja Call to Action -->
+    <section class="cta">
+        <h2>Dołącz teraz i zorganizuj swój turniej!</h2>
+        <p>Nie czekaj! Zacznij używać TeamUp i zobacz, jak łatwe może być zarządzanie turniejami. Zarejestruj się już dziś, aby wykorzystać nasze narzędzia do organizacji, harmonogramowania, publikowania wyników i więcej!</p>
+        <a href="register.html" class="cta-button">Zarejestruj się teraz</a>
+    </section>
+    
+         <!-- Sekcja Dodatkowa Funkcjonalność -->
+    <section class="additional-features">
+        <h2>Dlaczego warto wybrać TeamUp?</h2>
+        <p>TeamUp to zaawansowana platforma, która rewolucjonizuje organizację turniejów sportowych. Dzięki prostemu i intuicyjnemu interfejsowi, organizacja staje się przyjemnością. Z TeamUp zaoszczędzisz czas, unikniesz błędów i będziesz miał pełną kontrolę nad swoim wydarzeniem.</p>
+        <img src="images/rece-zlozone.jpg" alt="Ręce złożone w geście zwycięstwa" class="section-image">
+    </section>
+    
+        
+    
+    <section class="contact">
+        <h2>Skontaktuj się z nami</h2>
+        <p>Masz pytania? Chcesz dowiedzieć się więcej o naszych funkcjach? Skontaktuj się z nami, a nasz zespół odpowie na wszystkie Twoje pytania!</p>
+        <p>Email: <a href="mailto:kontakt@teamup.pl">nieckarzkarol77@gmail.com</a></p>
+        <p>Telefon: <a href="tel:+48123456789">+48 786 299 977</a></p>
+        <p>Rzeszów, Polska</p>
+            <img src="images/pilka-w-siatce.jpg" alt="dzieci" class="section-image">
+
+        </div>
+    </section>
+    
+      
     </main>
+    
     <footer>
-        <p>&copy; <span id="year"></span> TeamUp. Wszelkie prawa zastrzeżone.</p>
+        <p>&copy; 2025 TeamUp. Wszystkie prawa zastrzeżone.</p>
     </footer>
+   
+    <script src="js/index.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/tournaments.js"></script>
+    <script src="js/create-tournament.js"></script>
+    <script src="js/schedule.js"></script>
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pobieranie danych z localStorage
+            const username = localStorage.getItem('username');
+            const userRole = localStorage.getItem('role');
+            const userId = localStorage.getItem('id');
+        
+            // Sprawdzanie, czy użytkownik jest zalogowany
+            if (username && userRole) {
+                // Jeśli zalogowany, wyświetlamy sekcję profilu
+                document.getElementById('userProfileSection').style.display = 'block';
+                document.getElementById('usernameDisplay').textContent = username;
+            }
+            
+            // Obsługa przycisku wylogowania
+            document.getElementById('logoutButton').addEventListener('click', () => {
+                // Usuwanie danych użytkownika z localStorage
+                localStorage.removeItem('username');
+                localStorage.removeItem('role');
+                localStorage.removeItem('id')
+                // Przekierowanie na stronę logowania
+                window.location.href = 'login.html';
+            });
+        });
     </script>
 </body>
+
 </html>

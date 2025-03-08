@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Organizatora - TeamUp</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div id="logo">TeamUp</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona Główna</a></li>
+                <li><a href="register.html">Rejestracja</a></li>
+                <li><a href="login.html">Logowanie</a></li>
+                <li><a href="organizer-dashboard.html">Panel Organizatora</a></li>
+                <li><a href="tournaments.html">Turnieje</a></li>
+                <li><a href="publish_results.html">Publikacja Wyników</a></li>
+            </ul>
+        </nav>
+      
+        
+        <!-- Sekcja profilu użytkownika w prawym górnym rogu -->
+        <div id="userProfileSection" style="display: none; text-align: right;">
+            <span id="logged-in-as">Zalogowany jako: <strong></strong></span>
+            <span id="usernameDisplay"></span>
+            <button id="logoutButton">Wyloguj</button>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="intro">
+            <h1>Witaj w Panelu Organizatora</h1>
+            <p>Pełne zarządzanie turniejami sportowymi.</p>
+        </section>
+
+        <section class="intro">
+            <h1>Moje Turnieje</h1>
+            <ul id="tournaments-list"></ul>
+            
+            <h2>Edytuj Turniej</h2>
+<form id="edit-tournament-form">
+    <select id="edit-tournament-name" placeholder="Nazwa Turnieju" required>
+        <option value="">Wybierz turniej</option>
+        <!-- Opcje będą dynamicznie ładowane -->
+    </select>
+    <input type="date" id="edit-tournament-date" required>
+    <input type="text" id="edit-tournament-location" placeholder="Lokalizacja" required>
+    <input type="text" id="edit-tournament-format" placeholder="Format" required>
+    <button type="submit">Zaktualizuj</button>
+</form>
+
+            <h1>Usuń Turniej</h1>
+            <form id="delete-tournament-form">
+                <select id="delete-tournament-id" placeholder="ID Turnieju" required>
+                    <option value="">Wybierz turniej</option>
+                    <!-- Opcje będą dynamicznie ładowane -->
+                </select>
+                <button type="submit">Usuń</button>
+             <div id="delete-message" class="message"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TeamUp. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+
+   
+    <script src="js/index.js"></script>
+    <script src="js/auth.js"></script> <!-- Skrypt JavaScript -->
+    <script src="js/tournaments.js"></script>
+    <script src="js/create-tournament.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/organizer-dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pobieranie danych z localStorage
+            const username = localStorage.getItem('username');
+            const userRole = localStorage.getItem('role');
+            const organizerId = localStorage.getItem('id');
+        
+            // Sprawdzanie, czy użytkownik jest zalogowany
+            if (username && userRole) {
+                // Jeśli zalogowany, wyświetlamy sekcję profilu
+                document.getElementById('userProfileSection').style.display = 'block';
+                document.getElementById('usernameDisplay').textContent = username;
+            }
+            
+            // Obsługa przycisku wylogowania
+            document.getElementById('logoutButton').addEventListener('click', () => {
+                // Usuwanie danych użytkownika z localStorage
+                localStorage.removeItem('username');
+                localStorage.removeItem('role');
+                localStorage.removeItem('id')
+                // Przekierowanie na stronę logowania
+                window.location.href = 'login.html';
+            });
+        });
+        </script>
+       
+        
+    </script>
+</body>
+
+</html>
