@@ -7,18 +7,12 @@ const app = express();
 
 
 
-// Pozwól na zapytania tylko z Twojego frontendu na Render
-const allowedOrigins = ['https://aplikacja-teamup.onrender.com', 'http://localhost:3001'];
-
-
-
-
-// Konfiguracja CORS
+// Konfiguracja CORS, aby zezwalała na dostęp z wszystkich domen
 app.use(cors({
-  origin: allowedOrigins,   // Tylko te domeny mają dostęp do backendu
-  methods: ['GET', 'POST'],  // Dopuszczone metody HTTP
-  allowedHeaders: ['Content-Type', 'Authorization'], // Dopuszczone nagłówki
-}));
+    origin: '*',  // Zezwalaj na zapytania z każdej domeny
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Zezwalaj na wszystkie metody HTTP
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Zezwalaj na wszystkie nagłówki
+  }));
 
 
 
